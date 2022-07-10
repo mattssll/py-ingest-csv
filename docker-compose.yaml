@@ -7,16 +7,23 @@ services:
     build:
       context: src
       dockerfile: Dockerfile.ingestion
-    command: ["./ingestion.py"]
+    entrypoint: [ "/bin/sh","-c" ]
+    command:
+      - |
+        pytest -v | tee ./tests/test_results.log
+        python ./ingestion.py
+    environment:
+      - DATABASE_URL=mysql+asyncmy://temper_code_test:good_luck@database/temper_code_test
+
     volumes:
-      - ./src/data:/data
-      - ./src/sql:/sql
-      - ./src/ingestion:/ingestion # for development purposes, so containers rebuild when we change code
       - ./src/logger:/app/logger
+      - ./src/sql:/app/sql
+      - ./src/commons:/app/commons
+      - ./src/ingestion:/app/ingestion # for development purposes, so containers rebuild when we change code
+      - ./src/tests:/app/tests
     depends_on:
       database:
         condition: service_healthy
-
 
   database:
     image: mysql:8.0
