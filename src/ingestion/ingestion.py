@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 
-import csv
-import json
-import sqlalchemy
-
-from logger.logs import logger
-
-
+from commons.database.db import init_db, write_ddl
+from commons.models.people import People
+from commons.models.places import Places
+import asyncio
+"""
 # connect to the database
 engine = sqlalchemy.create_engine(
     "mysql://temper_code_test:good_luck@database/temper_code_test")
@@ -34,4 +32,12 @@ with open('/data/example_python.json', 'w') as json_file:
     json.dump(rows, json_file, separators=(',', ':'))
 
 
+"""
+
+async def start_db():
+    await init_db()
+    await write_ddl(table_names=[Places.__name__.lower(), People.__name__.lower()], write_path='./sql')
+
+if __name__ == '__main__':
+    asyncio.run(start_db())
 
