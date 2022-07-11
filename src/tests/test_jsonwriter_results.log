@@ -1,0 +1,7 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.5, pytest-7.1.2, pluggy-1.0.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 0 items
+
+============================ no tests ran in 0.06s =============================

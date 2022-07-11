@@ -2,30 +2,6 @@ version: "3.7"
 
 services:
 
-  pyingestion:
-    image: pyingestion
-    build:
-      context: src
-      dockerfile: Dockerfile.ingestion
-    entrypoint: [ "/bin/sh","-c" ]
-    command:
-      - |
-        pytest -v | tee ./tests/test_results.log
-        python ./ingestion.py
-    environment:
-      - DATABASE_URL=mysql+asyncmy://temper_code_test:good_luck@database/temper_code_test?charset=utf8mb4
-
-    volumes:
-      - ./src/data:/app/data
-      - ./src/logger:/app/logger
-      - ./src/sql:/app/sql
-      - ./src/commons:/app/commons
-      - ./src/ingestion:/app/ingestion # for development purposes, so containers rebuild when we change code
-      - ./src/tests:/app/tests
-    depends_on:
-      database:
-        condition: service_healthy
-
   database:
     image: mysql:8.0
     platform: linux/amd64
@@ -40,6 +16,56 @@ services:
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 3s
-      retries: 15
+      retries: 30
     restart: always
 
+  pyingestion:
+    image: pyingestion
+    build:
+      context: src
+      dockerfile: Dockerfile.ingestion
+    entrypoint: [ "/bin/sh","-c" ]
+    command:
+      - |
+        pytest -v ./tests/test_ingestion_with_pytest.py | tee ./tests/test_ingestion_results.log
+        python ./ingestion.py
+    environment:
+      - DATABASE_URL=mysql+asyncmy://temper_code_test:good_luck@database/temper_code_test?charset=utf8mb4
+    volumes:
+      - ./src/data:/app/data
+      - ./src/logger:/app/logger
+      - ./src/sql:/app/sql
+      - ./src/ingestion:/app/ingestion  # so when we save the file docker picks up the code change
+      - ./src/commons:/app/commons
+      - ./src/tests:/app/tests
+    healthcheck:
+      test: bash -c "[ -f ./finished_ingestion/finished_ingestion.txt ]"
+      interval: 2s
+      timeout: 5s
+      retries: 30
+    depends_on:
+      database:
+        condition: service_healthy
+
+  jsonwriter:
+    image: jsonwriter
+    build:
+      context: src
+      dockerfile: Dockerfile.jsonwriter
+    entrypoint: [ "/bin/sh","-c" ]
+    command:
+      - |
+        pytest -v ./tests/test_jsonwriter_with_pytest.py | tee ./tests/test_jsonwriter_results.log
+        python ./jsonwriter.py
+    environment:
+      - DATABASE_URL=mysql+asyncmy://temper_code_test:good_luck@database/temper_code_test?charset=utf8mb4
+    volumes:
+      - ./src/data:/app/data
+      - ./src/logger:/app/logger
+      - ./src/sql:/app/sql
+      - ./src/jsonwriter:/app/jsonwriter  # so when we save the file docker picks up the code change
+      - ./src/commons:/app/commons
+      - ./src/tests:/app/tests
+    depends_on:
+      pyingestion:
+        condition: service_healthy

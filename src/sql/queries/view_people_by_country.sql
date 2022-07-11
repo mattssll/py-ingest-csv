@@ -1,6 +1,6 @@
 SELECT
-    place.country,
-    COUNT(people.id) AS ct
+    pl.country,
+    COUNT(pf.id) AS ct
 FROM
     places pl
 LEFT JOIN

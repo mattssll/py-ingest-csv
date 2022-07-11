@@ -5,7 +5,7 @@ from sqlmodel import SQLModel
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
-from logger.logs import logger
+from logger.logs_ingestion import logger
 
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
