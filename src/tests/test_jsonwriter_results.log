@@ -1,0 +1,9 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.5, pytest-7.1.2, pluggy-1.0.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+collecting ... collected 1 item
+
+tests/test_jsonwriter_with_pytest.py::test_jsonwriter_write_valid_json PASSED [100%]
+
+============================== 1 passed in 0.41s ===============================

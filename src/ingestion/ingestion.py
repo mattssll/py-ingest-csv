@@ -1,37 +1,36 @@
 #!/usr/bin/env python
+import asyncio
+import time
 
-import csv
-import json
-import sqlalchemy
-
+from commons.database.db import init_db, write_ddl
+from commons.database.controller import run_query_in_db
+from commons.models.people import PeopleRaw, PeopleFinal, PeopleRawBase
+from commons.models.places import Places, PlacesBase
+from ingestion.utils import ingest_csv_file
+from ingestion.utils import flag_finished_ingestion
 from logger.logs import logger
+from sql.queries.queries import INSERT_PEOPLE_FINAL
 
 
-# connect to the database
-engine = sqlalchemy.create_engine(
-    "mysql://temper_code_test:good_luck@database/temper_code_test")
-connection = engine.connect()
-
-metadata = sqlalchemy.schema.MetaData(engine)
-
-# make an ORM object to refer to the table
-Example = sqlalchemy.schema.Table(
-    'examples', metadata, autoload=True, autoload_with=engine)
-
-# read the CSV data file into the table
-print("writing data to db")
-with open('/data/example.csv') as csv_file:
-    reader = csv.reader(csv_file)
-    next(reader)
-    for row in reader:
-        connection.execute(Example.insert().values(name=row[0]))
-
-# output the table to a JSON file
-print("writing output file")
-with open('/data/example_python.json', 'w') as json_file:
-    rows = connection.execute(sqlalchemy.sql.select([Example])).fetchall()
-    rows = [{'id': row[0], 'name': row[1]} for row in rows]
-    json.dump(rows, json_file, separators=(',', ':'))
+async def main():
+    await init_db()
+    await write_ddl(
+        table_names=[Places.__name__.lower(), PeopleRaw.__name__.lower(), PeopleFinal.__name__.lower()],
+        write_path='./sql/schemas'
+    )
+    await ingest_csv_file(
+        input_path='/app/data', file_name='places.csv',delimiter=',',
+        csv_pydantic_schema=PlacesBase,
+        ModelORM=Places)
+    await ingest_csv_file(
+        input_path='/app/data', file_name='people.csv',delimiter=',',
+        csv_pydantic_schema=PeopleRawBase,
+        ModelORM=PeopleRaw)
+    await run_query_in_db(query=INSERT_PEOPLE_FINAL, mode="post")
 
 
-
+if __name__ == '__main__':
+    asyncio.run(main())  # here is where our ingestion process run
+    logger.info("Finished ingestion process, writing healthcheck file for docker to start jsonwriter")
+    flag_finished_ingestion(path="./finished_ingestion", file_name="/finished_ingestion.txt")
+    time.sleep(20)  # to make sure our healthcheck can pick up the file we have written above

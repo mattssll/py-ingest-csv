@@ -6,5 +6,7 @@ COPY jsonwriter/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY jsonwriter/jsonwriter.py ./
-COPY commons/ ./commons
+COPY sql/ ./sql
 COPY logger/ ./logger
+COPY commons/ ./commons
+COPY tests/ ./tests

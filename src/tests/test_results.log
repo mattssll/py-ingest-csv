@@ -1,0 +1,12 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.5, pytest-7.1.2, pluggy-1.0.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+plugins: anyio-3.6.1
+collecting ... collected 3 items
+
+tests/test_with_pytest.py::test_write_ddl PASSED                         [ 33%]
+tests/test_with_pytest.py::test_parser_valid_record PASSED               [ 66%]
+tests/test_with_pytest.py::test_parser_invalid_record PASSED             [100%]
+
+============================== 3 passed in 1.10s ===============================
