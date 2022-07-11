@@ -34,16 +34,13 @@ async def run_query_in_db(query: str, mode: str) -> Union[None, List]:
     :return: None
     """
     try:
-        logger.info("Started to run a .sql query in the database")
         async with engine.connect() as conn:
             if mode == "post":
                 await conn.execute(text(query))
                 await conn.commit()
-                logger.info("Finished running a .sql query to insert data in the database")
             if mode == "get":
                 results = await conn.execute(text(query))
                 results = results.fetchall()
-                logger.info("Finished running a .sql query to get data from the database")
                 return results
     except Exception as e:
         logger.error(f"an error happened when running your query, error as follows: {e}")

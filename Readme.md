@@ -125,6 +125,7 @@ make down
 <ul>
 <li>Test logs can be found in ./src/tests/test_results.log
 <li>Logs can be found in ./src/logger/logs.log</li>
+<li>On Docker-compose: Ingestion service waits for healthcheck in MySQLDB, and JsonWriter (2nd python image) waits for Ingestion to finish - created a file to communicate that so healthcheck can pick it</li>
 <li>Tables are created from ORM models in ./src/commons/models, but I have also created a fx that writes the DDL .sql statements in .src/sql/schemas</li>
 <li>We receive data with a city name, which is potentially problematic as same city name could exist in more than one country</li>
 <li>We have lots of people that have more than 100 years old, this is very easy to remove with pydantic models</li>

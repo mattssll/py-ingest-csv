@@ -1,4 +1,4 @@
-2022-07-11 04:59:11 INFO     Starting to write json output results with number of people per country
-2022-07-11 04:59:11 INFO     Started to run a .sql query in the database
-2022-07-11 04:59:12 INFO     Finished running a .sql query to get data from the database
-2022-07-11 04:59:12 INFO     Finished to write json output results with number of people per country, see it in ./data/agg_ppl_by_country.json
+2022-07-11 05:42:09 INFO     Starting to write json output results with number of people per country
+2022-07-11 05:42:09 INFO     Started to run a .sql query in the database
+2022-07-11 05:42:09 INFO     Finished running a .sql query to get data from the database
+2022-07-11 05:42:09 INFO     Finished to write json output results with number of people per country, see it in ./data/agg_ppl_by_country.json

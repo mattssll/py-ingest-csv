@@ -16,7 +16,7 @@ services:
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 3s
-      retries: 15
+      retries: 30
     restart: always
 
   pyingestion:
@@ -38,6 +38,11 @@ services:
       - ./src/ingestion:/app/ingestion  # so when we save the file docker picks up the code change
       - ./src/commons:/app/commons
       - ./src/tests:/app/tests
+    healthcheck:
+      test: bash -c "[ -f ./finished_ingestion/finished_ingestion.txt ]"
+      interval: 2s
+      timeout: 5s
+      retries: 30
     depends_on:
       database:
         condition: service_healthy
@@ -62,7 +67,5 @@ services:
       - ./src/commons:/app/commons
       - ./src/tests:/app/tests
     depends_on:
-      database:
+      pyingestion:
         condition: service_healthy
-
-

@@ -29,8 +29,7 @@ sh-build: up-with-build ## Bash - with rebuilding
 query: ## Query
 	$(DOCKER_COMP_F) run database mysql --host=database --user=temper_code_test --password=good_luck temper_code_test
 example:
-	$(DOCKER_COMP) run --no-TTY database mysql --host=database --user=temper_code_test --password=good_luck temper_code_test <example_schema.sql
-	$(DOCKER_COMP) run pyingestion
+	$(DOCKER_COMP) up --build
 
 log: ## Show Logs
 	tail -n 100 -f $(PWD)/src/logger/*.log | awk '\
