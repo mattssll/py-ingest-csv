@@ -10,10 +10,10 @@ from logger.logs import logger
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
-engine = create_async_engine(DATABASE_URL, echo=True, future=True)
+engine = create_async_engine(DATABASE_URL, future=True)
 
 
-async def init_db():
+async def init_db() -> None:
     async with engine.begin() as conn:
         await conn.run_sync(SQLModel.metadata.drop_all)
         logger.info("Starting to create database tables")
@@ -25,11 +25,15 @@ async def get_session() -> AsyncSession:
     async_session = sessionmaker(
         engine, class_=AsyncSession, expire_on_commit=False
     )
-    async with async_session() as session:
-        yield session
+    return async_session
 
 
 async def write_ddl(table_names: str, write_path: str) -> None:
+    """
+    This function receives a table_name from an ORM Class,
+    and writes the .DDL statement in src/sql/schemas,
+    for versioning mostly
+    """
     logger.info(f"writing ddl file for tables {table_names}")
     for table_name in table_names:
         get_ddl = f"SHOW CREATE TABLE {table_name}"
@@ -45,3 +49,4 @@ async def write_ddl(table_names: str, write_path: str) -> None:
         except Exception as e:
             logger.error(
                 f"something failed, could not write the ddl for the table {table_name}, error as follows: {e}")
+
