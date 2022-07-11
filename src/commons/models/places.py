@@ -1,7 +1,6 @@
 from typing import Optional
 from sqlmodel import Field, Relationship, SQLModel
 from sqlalchemy import UniqueConstraint
-from commons.models.people import People
 
 
 class PlacesBase(SQLModel):

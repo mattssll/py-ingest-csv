@@ -3,3 +3,5 @@ SQLAlchemy ~= 1.4.31
 sqlmodel
 asyncmy
 pytest
+pydantic
+fastapi

@@ -1,62 +1,12 @@
-2022-07-10 23:24:43 INFO     SELECT DATABASE()
-2022-07-10 23:24:43 INFO     [raw sql] ()
-2022-07-10 23:24:43 INFO     SELECT @@sql_mode
-2022-07-10 23:24:43 INFO     [raw sql] ()
-2022-07-10 23:24:43 INFO     SELECT @@lower_case_table_names
-2022-07-10 23:24:43 INFO     [raw sql] ()
-2022-07-10 23:24:43 INFO     BEGIN (implicit)
-2022-07-10 23:24:43 INFO     SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = %s AND table_name = %s
-2022-07-10 23:24:43 INFO     [generated in 0.00087s] ('temper_code_test', 'people')
-2022-07-10 23:24:43 INFO     SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = %s AND table_name = %s
-2022-07-10 23:24:43 INFO     [cached since 0.007872s ago] ('temper_code_test', 'places')
-2022-07-10 23:24:43 INFO     
-DROP TABLE people
-2022-07-10 23:24:43 INFO     [no key 0.00128s] ()
-2022-07-10 23:24:43 INFO     
-DROP TABLE places
-2022-07-10 23:24:43 INFO     [no key 0.00109s] ()
-2022-07-10 23:24:43 INFO     Starting to create database tables
-2022-07-10 23:24:43 INFO     SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = %s AND table_name = %s
-2022-07-10 23:24:43 INFO     [cached since 0.07315s ago] ('temper_code_test', 'people')
-2022-07-10 23:24:43 INFO     SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = %s AND table_name = %s
-2022-07-10 23:24:43 INFO     [cached since 0.08051s ago] ('temper_code_test', 'places')
-2022-07-10 23:24:43 INFO     
-CREATE TABLE places (
-	city VARCHAR(96) NOT NULL, 
-	county VARCHAR(96) NOT NULL, 
-	country VARCHAR(48) NOT NULL, 
-	id INTEGER AUTO_INCREMENT, 
-	PRIMARY KEY (id), 
-	UNIQUE (city, county, country)
-)
-
-
-2022-07-10 23:24:43 INFO     [no key 0.00123s] ()
-2022-07-10 23:24:43 INFO     
-CREATE TABLE people (
-	given_name VARCHAR(48) NOT NULL, 
-	family_name VARCHAR(96) NOT NULL, 
-	date_of_birth VARCHAR(32) NOT NULL, 
-	place_of_birth VARCHAR(96), 
-	id INTEGER AUTO_INCREMENT, 
-	place_id INTEGER, 
-	PRIMARY KEY (id), 
-	UNIQUE (given_name, family_name, date_of_birth, place_of_birth), 
-	FOREIGN KEY(place_id) REFERENCES places (id)
-)
-
-
-2022-07-10 23:24:43 INFO     [no key 0.00099s] ()
-2022-07-10 23:24:43 INFO     Finished creating database tables
-2022-07-10 23:24:43 INFO     COMMIT
-2022-07-10 23:24:43 INFO     writing ddl file for tables ['places', 'people']
-2022-07-10 23:24:43 INFO     BEGIN (implicit)
-2022-07-10 23:24:43 INFO     SHOW CREATE TABLE places
-2022-07-10 23:24:43 INFO     [generated in 0.00142s] ()
-2022-07-10 23:24:43 INFO     table places was created successfully
-2022-07-10 23:24:43 INFO     ROLLBACK
-2022-07-10 23:24:43 INFO     BEGIN (implicit)
-2022-07-10 23:24:43 INFO     SHOW CREATE TABLE people
-2022-07-10 23:24:43 INFO     [generated in 0.00183s] ()
-2022-07-10 23:24:43 INFO     table people was created successfully
-2022-07-10 23:24:43 INFO     ROLLBACK
+2022-07-11 04:01:35 INFO     Starting to create database tables
+2022-07-11 04:01:35 INFO     Finished creating database tables
+2022-07-11 04:01:35 INFO     writing ddl file for tables ['places', 'peopleraw', 'peoplefinal']
+2022-07-11 04:01:35 INFO     table places was created successfully
+2022-07-11 04:01:35 INFO     table peopleraw was created successfully
+2022-07-11 04:01:35 INFO     table peoplefinal was created successfully
+2022-07-11 04:01:35 INFO     starting to ingest csv /app/data/places.csv
+2022-07-11 04:01:35 INFO     finished ingesting /app/data/places.csv
+2022-07-11 04:01:35 INFO     starting to ingest csv /app/data/people.csv
+2022-07-11 04:02:07 INFO     finished ingesting /app/data/people.csv
+2022-07-11 04:02:07 INFO     Started to run a .sql query in the database
+2022-07-11 04:02:08 INFO     Finished running a .sql query in the database
