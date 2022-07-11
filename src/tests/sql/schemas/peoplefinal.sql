@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS peoplefinal; 
 
 CREATE TABLE `peoplefinal` (
-  `given_name` varchar(48) NOT NULL,
-  `family_name` varchar(96) NOT NULL,
+  `given_name` varchar(48) COLLATE utf8mb4_general_ci NOT NULL,
+  `family_name` varchar(96) COLLATE utf8mb4_general_ci NOT NULL,
   `date_of_birth` date NOT NULL,
   `id` int NOT NULL AUTO_INCREMENT,
   `place_id` int DEFAULT NULL,

@@ -1,10 +1,10 @@
-from logger.logs import logger
-from pydantic import ValidationError
-from typing import Optional, Type
-from sqlmodel import SQLModel
 import csv
+from pydantic import ValidationError
+from sqlmodel import SQLModel
+from typing import Optional, Type
 
 from commons.database.controller import add_record_to_db
+from logger.logs_ingestion import logger
 
 
 def validate_row(csv_row, csv_pydantic_schema) -> Optional[SQLModel]:

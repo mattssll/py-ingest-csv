@@ -1,15 +1,16 @@
 #!/usr/bin/env python -m
 
+import asyncio
+import json
 import os
+import pytest
+
 from commons.database.db import write_ddl, init_db
 from commons.models.people import PeopleRaw, PeopleFinal, PeopleRawBase
 from commons.models.places import Places, PlacesBase
 from ingestion.csvparser import validate_row
-import asyncio
-import json
 
-
-def test_write_ddl():
+def test_ingestion_write_ddl():
     path_to_ddl = './tests/sql/schemas'
     path_places_ddl = f"{path_to_ddl}/{Places.__name__.lower()}.sql"
     path_people_raw_ddl = f"{path_to_ddl}/{PeopleRaw.__name__.lower()}.sql"
@@ -27,7 +28,7 @@ def test_write_ddl():
     assert os.path.exists(path_people_final_ddl) == True
 
 
-def test_parser_valid_record():
+def test_ingestion_parser_valid_record():
     place_record = json.dumps({
         "city": "Amsterdam",
         "county": "Noord Holland",
@@ -51,7 +52,7 @@ def test_parser_valid_record():
     assert isinstance(validator_response_people, PeopleRawBase)
 
 
-def test_parser_invalid_record():
+def test_ingestion_parser_invalid_record():
     place_parser_response = validate_row(
         csv_row ={"dummie_field": "this field is non-existent"},
         csv_pydantic_schema=PlacesBase
