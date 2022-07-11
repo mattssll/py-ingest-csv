@@ -15,7 +15,12 @@ def test_ingestion_write_ddl():
     path_places_ddl = f"{path_to_ddl}/{Places.__name__.lower()}.sql"
     path_people_raw_ddl = f"{path_to_ddl}/{PeopleRaw.__name__.lower()}.sql"
     path_people_final_ddl = f"{path_to_ddl}/{PeopleFinal.__name__.lower()}.sql"
-
+    if os.path.exists(path_places_ddl):
+        os.remove(path_places_ddl)
+    if os.path.exists(path_people_raw_ddl):
+        os.remove(path_people_raw_ddl)
+    if os.path.exists(path_people_final_ddl):
+        os.remove(path_people_final_ddl)
     async def run_db_test():
         await init_db()
         await write_ddl(

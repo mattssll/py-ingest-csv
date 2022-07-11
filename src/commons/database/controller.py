@@ -1,9 +1,10 @@
-from typing import Type
+from typing import Type, Union, List
 from sqlalchemy import text
 from sqlmodel import SQLModel
+
 from commons.database.db import get_session, engine
-from logger.logs_ingestion import logger
-from typing import Union, List
+from logger.logs import logger
+
 
 async def add_record_to_db(record: SQLModel, ModelORM: Type[SQLModel]) -> None:
     """
@@ -34,6 +35,7 @@ async def run_query_in_db(query: str, mode: str) -> Union[None, List]:
     :return: None
     """
     try:
+        logger.info(f"Starting to query database on mode {mode}")
         async with engine.connect() as conn:
             if mode == "post":
                 await conn.execute(text(query))
@@ -42,5 +44,7 @@ async def run_query_in_db(query: str, mode: str) -> Union[None, List]:
                 results = await conn.execute(text(query))
                 results = results.fetchall()
                 return results
+        logger.info(f"Finished to query database on mode {mode}")
     except Exception as e:
         logger.error(f"an error happened when running your query, error as follows: {e}")
+        return None

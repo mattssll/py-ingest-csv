@@ -32,8 +32,8 @@ services:
     environment:
       - DATABASE_URL=mysql+asyncmy://temper_code_test:good_luck@database/temper_code_test?charset=utf8mb4
     volumes:
-      - ./src/data:/app/data
       - ./src/logger:/app/logger
+      - ./src/data:/app/data
       - ./src/sql:/app/sql
       - ./src/ingestion:/app/ingestion  # so when we save the file docker picks up the code change
       - ./src/commons:/app/commons
@@ -60,8 +60,8 @@ services:
     environment:
       - DATABASE_URL=mysql+asyncmy://temper_code_test:good_luck@database/temper_code_test?charset=utf8mb4
     volumes:
-      - ./src/data:/app/data
       - ./src/logger:/app/logger
+      - ./src/data:/app/data
       - ./src/sql:/app/sql
       - ./src/jsonwriter:/app/jsonwriter  # so when we save the file docker picks up the code change
       - ./src/commons:/app/commons
