@@ -1,4 +1,3 @@
-
 with open('./sql/queries/insert_people_final.sql', 'r') as file:
     INSERT_PEOPLE_FINAL = file.read()
 
