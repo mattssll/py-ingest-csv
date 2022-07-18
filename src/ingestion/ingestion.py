@@ -23,7 +23,7 @@ async def main():
         csv_pydantic_schema=PlacesBase,
         ModelORM=Places)
     await ingest_csv_file(
-        input_path='/app/data', file_name='people.csv',delimiter=',',
+        input_path='/app/data', file_name='people_col.csv',delimiter=',',
         csv_pydantic_schema=PeopleRawBase,
         ModelORM=PeopleRaw)
     await run_query_in_db(query=INSERT_PEOPLE_FINAL, mode="post")

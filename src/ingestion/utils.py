@@ -23,6 +23,7 @@ async def ingest_csv_file(input_path: str,
     with open(f'{input_path}/{file_name}', 'r', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=delimiter)
         for row in reader:
+            logger.info(f"row:  {row}")
             valid_object = validate_row(csv_row=row, csv_pydantic_schema=csv_pydantic_schema)
             if valid_object:
                 await add_record_to_db(valid_object.dict(), ModelORM=ModelORM)
