@@ -1,0 +1,598 @@
+2022-07-13 13:46:22 INFO     Starting to create database tables
+2022-07-13 13:46:22 INFO     Finished creating database tables
+2022-07-13 13:46:22 INFO     writing ddl file for tables ['places', 'peopleraw', 'peoplefinal']
+2022-07-13 13:46:23 INFO     table places was created successfully
+2022-07-13 13:46:23 INFO     table peopleraw was created successfully
+2022-07-13 13:46:23 INFO     table peoplefinal was created successfully
+2022-07-13 13:46:23 INFO     starting to ingest csv /app/data/places.csv
+2022-07-13 13:46:23 INFO     finished ingesting /app/data/places.csv
+2022-07-13 13:46:23 INFO     starting to ingest csv /app/data/people.csv
+2022-07-13 13:47:00 INFO     finished ingesting /app/data/people.csv
+2022-07-13 13:47:00 INFO     Starting to query database on mode post
+2022-07-13 13:47:01 INFO     Finished to query database on mode post
+2022-07-13 13:47:01 INFO     Finished ingestion process, writing healthcheck file for docker to start jsonwriter
+2022-07-13 13:47:03 INFO     Preparing to write json data in ./data/summary_output.json
+2022-07-13 13:47:03 INFO     Starting to query database on mode get
+2022-07-13 13:47:03 INFO     Finished to write json data in ./data/summary_output.json
+2022-07-13 14:12:17 INFO     Starting to create database tables
+2022-07-13 14:12:17 INFO     Finished creating database tables
+2022-07-13 14:12:17 INFO     writing ddl file for tables ['places', 'peopleraw', 'peoplefinal']
+2022-07-13 14:12:17 INFO     table places was created successfully
+2022-07-13 14:12:17 INFO     table peopleraw was created successfully
+2022-07-13 14:12:17 INFO     table peoplefinal was created successfully
+2022-07-13 14:12:17 INFO     starting to ingest csv /app/data/places.csv
+2022-07-13 14:12:18 INFO     finished ingesting /app/data/places.csv
+2022-07-13 14:12:18 INFO     starting to ingest csv /app/data/people_col.csv
+2022-07-13 14:12:18 INFO     finished ingesting /app/data/people_col.csv
+2022-07-13 14:12:18 INFO     Starting to query database on mode post
+2022-07-13 14:12:18 ERROR    an error happened when running your query, error as follows: (asyncmy.errors.OperationalError) (1292, "Incorrect date value: '13-03-1949' for column 'date_of_birth' at row 2")
+[SQL: INSERT INTO peoplefinal
+(given_name, family_name, date_of_birth, place_id)
+SELECT
+    given_name,
+    family_name,
+    date_of_birth,
+    pl.id
+FROM
+    peopleraw pr
+INNER JOIN
+    places pl ON pl.city = pr.place_of_birth
+;]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2022-07-13 14:12:18 INFO     Finished ingestion process, writing healthcheck file for docker to start jsonwriter
+2022-07-13 14:12:20 INFO     Preparing to write json data in ./data/summary_output.json
+2022-07-13 14:12:20 INFO     Starting to query database on mode get
+2022-07-13 14:12:20 INFO     Finished to write json data in ./data/summary_output.json
+2022-07-14 17:44:17 INFO     Starting to create database tables
+2022-07-14 17:44:17 INFO     Finished creating database tables
+2022-07-14 17:44:17 INFO     writing ddl file for tables ['places', 'peopleraw', 'peoplefinal']
+2022-07-14 17:44:17 INFO     table places was created successfully
+2022-07-14 17:44:17 INFO     table peopleraw was created successfully
+2022-07-14 17:44:17 INFO     table peoplefinal was created successfully
+2022-07-14 17:44:17 INFO     starting to ingest csv /app/data/places.csv
+2022-07-14 17:44:17 INFO     row:  {'city': 'Aberdeen', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Airdrie', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Alloa', 'county': 'Clackmannanshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Annan', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Anstruther', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Arbroath', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Ardrossan', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Armagh', 'county': 'Armagh', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Ayr', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Ballymena', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Ballymoney', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Banbridge', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Banff', 'county': 'Banffshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Bangor', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Barrhead', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Bathgate', 'county': 'West Lothian', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Belfast', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Bellshill', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Blairgowrie', 'county': 'Perthshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Brechin', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Bridge of Allan', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Buckie', 'county': 'Banffshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Campbeltown', 'county': 'Argyll', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Carluke', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Carrickfergus', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Castle Douglas', 'county': 'Kirkcudbrightshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Clydebank', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Coatbridge', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Coleraine', 'county': 'Londonderry', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Cookstown', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Crieff', 'county': 'Perthshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Cupar', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dalbeattie', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dalkeith', 'county': 'Midlothian', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dalry', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dingwall', 'county': 'Ross and Cromarty', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Downpatrick', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dromore', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dufftown', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dumbarton', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dumfries', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dundee', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dunfermline', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:17 INFO     row:  {'city': 'Dungannon', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Edinburgh', 'county': 'Midlothian', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Elgin', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Enniskillen', 'county': 'Fermanagh', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Falkirk', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Forfar', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Forres', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Fraserburgh', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Galashiels', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Glasgow', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Golspie', 'county': 'Sutherland', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Grantown-on-Spey', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Greenock', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Haddington', 'county': 'East Lothian', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Hamilton', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Hawick', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Helensburgh', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Huntly', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Invergordon', 'county': 'Ross and Cromarty', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Inverness', 'county': 'Inverness-shire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Irvine', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Jedburgh', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Keith', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Kelso', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Kilmarnock', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Kilsyth', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Kinross', 'county': 'Kinross-shire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Kirkcaldy', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Kirkintilloch', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Kirkwall', 'county': 'Orkney', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Kirriemuir', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Lanark', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Langholm', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Larne', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Lerwick', 'county': 'Shetland', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Leven', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Linlithgow', 'county': 'West Lothian', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Lisburn', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Lockerbie', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Londonderry', 'county': 'Londonderry', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Lurgan', 'county': 'Armagh', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Milngavie', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Montrose', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Motherwell', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Musselburgh', 'county': 'East Lothian', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Nairn', 'county': 'Nairn', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Newry', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Newton Stewart', 'county': 'Wigtownshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Newtownards', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Oban', 'county': 'Argyll', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Omagh', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Paisley', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Peebles', 'county': 'Peeblesshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Perth', 'county': 'Perthshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Peterhead', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Port Glasgow', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Portadown', 'county': 'Armagh', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Portsoy', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Rothesay', 'county': 'Buteshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Selkirk', 'county': 'Selkirkshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'St Andrews', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Stirling', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Stonehaven', 'county': 'Kincardineshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Stornoway', 'county': 'Ross and Cromarty', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Strabane', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Stranraer', 'county': 'Wigtownshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Thurso', 'county': 'Caithness', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Tillicoultry', 'county': 'Clackmannanshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'West Calder', 'county': 'West Lothian', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Wick', 'county': 'Caithness', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     row:  {'city': 'Wishaw', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:18 INFO     finished ingesting /app/data/places.csv
+2022-07-14 17:44:18 INFO     starting to ingest csv /app/data/people_col.csv
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Mulrenan', 'given_name': 'Patrick', 'date_of_birth': '07-02-1941', 'place_of_birth': 'Hawick'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Hadfield', 'given_name': 'Ann', 'date_of_birth': '12-07-1935', 'place_of_birth': 'Tillicoultry'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Aairbaiter', 'given_name': 'Leah', 'date_of_birth': '1883-01-26', 'place_of_birth': 'Buckie'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Owen', 'given_name': 'Rebecca', 'date_of_birth': '1847-07-21', 'place_of_birth': 'Port Glasgow'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Baker', 'given_name': 'Walter', 'date_of_birth': '1898-12-12', 'place_of_birth': 'Stranraer'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Sewell', 'given_name': 'William', 'date_of_birth': '1840-07-10', 'place_of_birth': 'Forfar'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Larkins', 'given_name': 'Male', 'date_of_birth': '1842-12-29', 'place_of_birth': 'Peebles'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Gray', 'given_name': 'John', 'date_of_birth': '1890-04-06', 'place_of_birth': 'Dalry'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Owens', 'given_name': 'Mary', 'date_of_birth': '10-10-1914', 'place_of_birth': 'Haddington'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Derry', 'given_name': 'Peter', 'date_of_birth': '25-08-1956', 'place_of_birth': 'Hamilton'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Lodge', 'given_name': 'Ruth', 'date_of_birth': '30-06-1956', 'place_of_birth': 'Oban'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Powell', 'given_name': 'Ada', 'date_of_birth': '1887-02-14', 'place_of_birth': 'Crieff'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Lowe', 'given_name': 'Helen', 'date_of_birth': '04-01-1977', 'place_of_birth': 'Kirkcaldy'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'French', 'given_name': 'Alfred', 'date_of_birth': '1880-11-20', 'place_of_birth': 'Ballymena'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Nickolass', 'given_name': 'Sarah', 'date_of_birth': '1857-09-22', 'place_of_birth': 'Fraserburgh'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Ostryzniuk', 'given_name': 'Leanne', 'date_of_birth': '01-09-1976', 'place_of_birth': 'Campbeltown'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Miles', 'given_name': 'Ellen', 'date_of_birth': '1842-09-08', 'place_of_birth': 'Irvine'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Clark', 'given_name': 'Michelle', 'date_of_birth': '23-12-1981', 'place_of_birth': 'Forres'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Kelley', 'given_name': 'Alan', 'date_of_birth': '13-03-1949', 'place_of_birth': 'Stirling'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Balsdon', 'given_name': 'Ruth', 'date_of_birth': '1896-02-08', 'place_of_birth': 'Ayr'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Humphries', 'given_name': 'Frederick', 'date_of_birth': '30-11-1909', 'place_of_birth': 'Anstruther'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Whitby', 'given_name': 'Harry', 'date_of_birth': '1879-12-19', 'place_of_birth': 'Golspie'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Hughes', 'given_name': 'Hughie', 'date_of_birth': '1880-03-13', 'place_of_birth': 'Lanark'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Edge', 'given_name': 'David', 'date_of_birth': '13-01-1945', 'place_of_birth': 'Helensburgh'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Mcgovan', 'given_name': 'Lisa', 'date_of_birth': '12-05-1973', 'place_of_birth': 'Ballymena'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Robertson', 'given_name': 'Leslie', 'date_of_birth': '03-01-1914', 'place_of_birth': 'Kinross'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Bale', 'given_name': 'Anthony', 'date_of_birth': '15-02-1946', 'place_of_birth': 'Kelso'}
+2022-07-14 17:44:18 INFO     row:  {'family_name': 'Lewis', 'given_name': 'Margaret', 'date_of_birth': '1865-06-30', 'place_of_birth': 'Crieff'}
+2022-07-14 17:44:18 INFO     finished ingesting /app/data/people_col.csv
+2022-07-14 17:44:18 INFO     Starting to query database on mode post
+2022-07-14 17:44:18 ERROR    an error happened when running your query, error as follows: (asyncmy.errors.OperationalError) (1292, "Incorrect date value: '13-03-1949' for column 'date_of_birth' at row 2")
+[SQL: INSERT INTO peoplefinal
+(given_name, family_name, date_of_birth, place_id)
+SELECT
+    given_name,
+    family_name,
+    date_of_birth,
+    pl.id
+FROM
+    peopleraw pr
+INNER JOIN
+    places pl ON pl.city = pr.place_of_birth
+;]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2022-07-14 17:44:18 INFO     Finished ingestion process, writing healthcheck file for docker to start jsonwriter
+2022-07-14 17:44:35 INFO     Starting to create database tables
+2022-07-14 17:44:35 INFO     Finished creating database tables
+2022-07-14 17:44:35 INFO     writing ddl file for tables ['places', 'peopleraw', 'peoplefinal']
+2022-07-14 17:44:35 INFO     table places was created successfully
+2022-07-14 17:44:35 INFO     table peopleraw was created successfully
+2022-07-14 17:44:35 INFO     table peoplefinal was created successfully
+2022-07-14 17:44:35 INFO     starting to ingest csv /app/data/places.csv
+2022-07-14 17:44:35 INFO     row:  {'city': 'Aberdeen', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:44:35 INFO     row:  {'city': 'Airdrie', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:35 INFO     row:  {'city': 'Alloa', 'county': 'Clackmannanshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Annan', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Anstruther', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Arbroath', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Ardrossan', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Armagh', 'county': 'Armagh', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Ayr', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Ballymena', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Ballymoney', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Banbridge', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Banff', 'county': 'Banffshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Bangor', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Barrhead', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Bathgate', 'county': 'West Lothian', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Belfast', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Bellshill', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Blairgowrie', 'county': 'Perthshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Brechin', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Bridge of Allan', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Buckie', 'county': 'Banffshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Campbeltown', 'county': 'Argyll', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Carluke', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Carrickfergus', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Castle Douglas', 'county': 'Kirkcudbrightshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Clydebank', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Coatbridge', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Coleraine', 'county': 'Londonderry', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Cookstown', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Crieff', 'county': 'Perthshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Cupar', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dalbeattie', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dalkeith', 'county': 'Midlothian', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dalry', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dingwall', 'county': 'Ross and Cromarty', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Downpatrick', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dromore', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dufftown', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dumbarton', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dumfries', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dundee', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dunfermline', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Dungannon', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Edinburgh', 'county': 'Midlothian', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Elgin', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Enniskillen', 'county': 'Fermanagh', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Falkirk', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Forfar', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Forres', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Fraserburgh', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Galashiels', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Glasgow', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Golspie', 'county': 'Sutherland', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Grantown-on-Spey', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Greenock', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Haddington', 'county': 'East Lothian', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Hamilton', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Hawick', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Helensburgh', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Huntly', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Invergordon', 'county': 'Ross and Cromarty', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Inverness', 'county': 'Inverness-shire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Irvine', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Jedburgh', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Keith', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Kelso', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Kilmarnock', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Kilsyth', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Kinross', 'county': 'Kinross-shire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Kirkcaldy', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Kirkintilloch', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Kirkwall', 'county': 'Orkney', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Kirriemuir', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Lanark', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Langholm', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Larne', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Lerwick', 'county': 'Shetland', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Leven', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Linlithgow', 'county': 'West Lothian', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Lisburn', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Lockerbie', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Londonderry', 'county': 'Londonderry', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Lurgan', 'county': 'Armagh', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Milngavie', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Montrose', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Motherwell', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Musselburgh', 'county': 'East Lothian', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Nairn', 'county': 'Nairn', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Newry', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Newton Stewart', 'county': 'Wigtownshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Newtownards', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Oban', 'county': 'Argyll', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Omagh', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Paisley', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Peebles', 'county': 'Peeblesshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Perth', 'county': 'Perthshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Peterhead', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Port Glasgow', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Portadown', 'county': 'Armagh', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Portsoy', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Rothesay', 'county': 'Buteshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Selkirk', 'county': 'Selkirkshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'St Andrews', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Stirling', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Stonehaven', 'county': 'Kincardineshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Stornoway', 'county': 'Ross and Cromarty', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Strabane', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Stranraer', 'county': 'Wigtownshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Thurso', 'county': 'Caithness', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Tillicoultry', 'county': 'Clackmannanshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'West Calder', 'county': 'West Lothian', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Wick', 'county': 'Caithness', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     row:  {'city': 'Wishaw', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:44:36 INFO     finished ingesting /app/data/places.csv
+2022-07-14 17:44:36 INFO     starting to ingest csv /app/data/people_col.csv
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Mulrenan', 'given_name': 'Patrick', 'date_of_birth': '07-02-1941', 'place_of_birth': 'Hawick'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Hadfield', 'given_name': 'Ann', 'date_of_birth': '12-07-1935', 'place_of_birth': 'Tillicoultry'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Aairbaiter', 'given_name': 'Leah', 'date_of_birth': '1883-01-26', 'place_of_birth': 'Buckie'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Owen', 'given_name': 'Rebecca', 'date_of_birth': '1847-07-21', 'place_of_birth': 'Port Glasgow'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Baker', 'given_name': 'Walter', 'date_of_birth': '1898-12-12', 'place_of_birth': 'Stranraer'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Sewell', 'given_name': 'William', 'date_of_birth': '1840-07-10', 'place_of_birth': 'Forfar'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Larkins', 'given_name': 'Male', 'date_of_birth': '1842-12-29', 'place_of_birth': 'Peebles'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Gray', 'given_name': 'John', 'date_of_birth': '1890-04-06', 'place_of_birth': 'Dalry'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Owens', 'given_name': 'Mary', 'date_of_birth': '10-10-1914', 'place_of_birth': 'Haddington'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Derry', 'given_name': 'Peter', 'date_of_birth': '25-08-1956', 'place_of_birth': 'Hamilton'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Lodge', 'given_name': 'Ruth', 'date_of_birth': '30-06-1956', 'place_of_birth': 'Oban'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Powell', 'given_name': 'Ada', 'date_of_birth': '1887-02-14', 'place_of_birth': 'Crieff'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Lowe', 'given_name': 'Helen', 'date_of_birth': '04-01-1977', 'place_of_birth': 'Kirkcaldy'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'French', 'given_name': 'Alfred', 'date_of_birth': '1880-11-20', 'place_of_birth': 'Ballymena'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Nickolass', 'given_name': 'Sarah', 'date_of_birth': '1857-09-22', 'place_of_birth': 'Fraserburgh'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Ostryzniuk', 'given_name': 'Leanne', 'date_of_birth': '01-09-1976', 'place_of_birth': 'Campbeltown'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Miles', 'given_name': 'Ellen', 'date_of_birth': '1842-09-08', 'place_of_birth': 'Irvine'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Clark', 'given_name': 'Michelle', 'date_of_birth': '23-12-1981', 'place_of_birth': 'Forres'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Kelley', 'given_name': 'Alan', 'date_of_birth': '13-03-1949', 'place_of_birth': 'Stirling'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Balsdon', 'given_name': 'Ruth', 'date_of_birth': '1896-02-08', 'place_of_birth': 'Ayr'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Humphries', 'given_name': 'Frederick', 'date_of_birth': '30-11-1909', 'place_of_birth': 'Anstruther'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Whitby', 'given_name': 'Harry', 'date_of_birth': '1879-12-19', 'place_of_birth': 'Golspie'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Hughes', 'given_name': 'Hughie', 'date_of_birth': '1880-03-13', 'place_of_birth': 'Lanark'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Edge', 'given_name': 'David', 'date_of_birth': '13-01-1945', 'place_of_birth': 'Helensburgh'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Mcgovan', 'given_name': 'Lisa', 'date_of_birth': '12-05-1973', 'place_of_birth': 'Ballymena'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Robertson', 'given_name': 'Leslie', 'date_of_birth': '03-01-1914', 'place_of_birth': 'Kinross'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Bale', 'given_name': 'Anthony', 'date_of_birth': '15-02-1946', 'place_of_birth': 'Kelso'}
+2022-07-14 17:44:36 INFO     row:  {'family_name': 'Lewis', 'given_name': 'Margaret', 'date_of_birth': '1865-06-30', 'place_of_birth': 'Crieff'}
+2022-07-14 17:44:36 INFO     finished ingesting /app/data/people_col.csv
+2022-07-14 17:44:36 INFO     Starting to query database on mode post
+2022-07-14 17:44:36 ERROR    an error happened when running your query, error as follows: (asyncmy.errors.OperationalError) (1292, "Incorrect date value: '13-03-1949' for column 'date_of_birth' at row 2")
+[SQL: INSERT INTO peoplefinal
+(given_name, family_name, date_of_birth, place_id)
+SELECT
+    given_name,
+    family_name,
+    date_of_birth,
+    pl.id
+FROM
+    peopleraw pr
+INNER JOIN
+    places pl ON pl.city = pr.place_of_birth
+;]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2022-07-14 17:44:36 INFO     Finished ingestion process, writing healthcheck file for docker to start jsonwriter
+2022-07-14 17:44:38 INFO     Preparing to write json data in ./data/summary_output.json
+2022-07-14 17:44:38 INFO     Starting to query database on mode get
+2022-07-14 17:44:38 INFO     Finished to write json data in ./data/summary_output.json
+2022-07-14 17:52:02 INFO     Starting to create database tables
+2022-07-14 17:52:02 INFO     Finished creating database tables
+2022-07-14 17:52:02 INFO     writing ddl file for tables ['places', 'peopleraw', 'peoplefinal']
+2022-07-14 17:52:02 INFO     table places was created successfully
+2022-07-14 17:52:02 INFO     table peopleraw was created successfully
+2022-07-14 17:52:02 INFO     table peoplefinal was created successfully
+2022-07-14 17:52:02 INFO     starting to ingest csv /app/data/places.csv
+2022-07-14 17:52:02 INFO     row:  {'city': 'Aberdeen', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Airdrie', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Alloa', 'county': 'Clackmannanshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Annan', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Anstruther', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Arbroath', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Ardrossan', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Armagh', 'county': 'Armagh', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Ayr', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Ballymena', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Ballymoney', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Banbridge', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Banff', 'county': 'Banffshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Bangor', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Barrhead', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Bathgate', 'county': 'West Lothian', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Belfast', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Bellshill', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Blairgowrie', 'county': 'Perthshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Brechin', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Bridge of Allan', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Buckie', 'county': 'Banffshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Campbeltown', 'county': 'Argyll', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Carluke', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Carrickfergus', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Castle Douglas', 'county': 'Kirkcudbrightshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Clydebank', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Coatbridge', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Coleraine', 'county': 'Londonderry', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Cookstown', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Crieff', 'county': 'Perthshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Cupar', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dalbeattie', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dalkeith', 'county': 'Midlothian', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dalry', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dingwall', 'county': 'Ross and Cromarty', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Downpatrick', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dromore', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dufftown', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dumbarton', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dumfries', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dundee', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dunfermline', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Dungannon', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Edinburgh', 'county': 'Midlothian', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Elgin', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Enniskillen', 'county': 'Fermanagh', 'country': 'Northern Ireland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Falkirk', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Forfar', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Forres', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Fraserburgh', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Galashiels', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Glasgow', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Golspie', 'county': 'Sutherland', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Grantown-on-Spey', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Greenock', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Haddington', 'county': 'East Lothian', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Hamilton', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Hawick', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Helensburgh', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Huntly', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Invergordon', 'county': 'Ross and Cromarty', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Inverness', 'county': 'Inverness-shire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Irvine', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Jedburgh', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Keith', 'county': 'Moray', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Kelso', 'county': 'Roxburghshire', 'country': 'Scotland'}
+2022-07-14 17:52:02 INFO     row:  {'city': 'Kilmarnock', 'county': 'Ayrshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Kilsyth', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Kinross', 'county': 'Kinross-shire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Kirkcaldy', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Kirkintilloch', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Kirkwall', 'county': 'Orkney', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Kirriemuir', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Lanark', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Langholm', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Larne', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Lerwick', 'county': 'Shetland', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Leven', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Linlithgow', 'county': 'West Lothian', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Lisburn', 'county': 'Antrim', 'country': 'Northern Ireland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Lockerbie', 'county': 'Dumfriesshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Londonderry', 'county': 'Londonderry', 'country': 'Northern Ireland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Lurgan', 'county': 'Armagh', 'country': 'Northern Ireland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Milngavie', 'county': 'Dunbartonshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Montrose', 'county': 'Angus', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Motherwell', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Musselburgh', 'county': 'East Lothian', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Nairn', 'county': 'Nairn', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Newry', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Newton Stewart', 'county': 'Wigtownshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Newtownards', 'county': 'Down', 'country': 'Northern Ireland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Oban', 'county': 'Argyll', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Omagh', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Paisley', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Peebles', 'county': 'Peeblesshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Perth', 'county': 'Perthshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Peterhead', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Port Glasgow', 'county': 'Renfrewshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Portadown', 'county': 'Armagh', 'country': 'Northern Ireland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Portsoy', 'county': 'Aberdeenshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Rothesay', 'county': 'Buteshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Selkirk', 'county': 'Selkirkshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'St Andrews', 'county': 'Fife', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Stirling', 'county': 'Stirlingshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Stonehaven', 'county': 'Kincardineshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Stornoway', 'county': 'Ross and Cromarty', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Strabane', 'county': 'Tyrone', 'country': 'Northern Ireland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Stranraer', 'county': 'Wigtownshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Thurso', 'county': 'Caithness', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Tillicoultry', 'county': 'Clackmannanshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'West Calder', 'county': 'West Lothian', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Wick', 'county': 'Caithness', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     row:  {'city': 'Wishaw', 'county': 'Lanarkshire', 'country': 'Scotland'}
+2022-07-14 17:52:03 INFO     finished ingesting /app/data/places.csv
+2022-07-14 17:52:03 INFO     starting to ingest csv /app/data/people_col.csv
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Mulrenan', 'given_name': 'Patrick', 'date_of_birth': '07-02-1941', 'place_of_birth': 'Hawick'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Mulrenan', 'given_name': 'Patrick', 'date_of_birth': '07-02-1941', 'place_of_birth': 'Hawick'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Hadfield', 'given_name': 'Ann', 'date_of_birth': '12-07-1935', 'place_of_birth': 'Tillicoultry'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Hadfield', 'given_name': 'Ann', 'date_of_birth': '12-07-1935', 'place_of_birth': 'Tillicoultry'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Aairbaiter', 'given_name': 'Leah', 'date_of_birth': '1883-01-26', 'place_of_birth': 'Buckie'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Owen', 'given_name': 'Rebecca', 'date_of_birth': '1847-07-21', 'place_of_birth': 'Port Glasgow'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Baker', 'given_name': 'Walter', 'date_of_birth': '1898-12-12', 'place_of_birth': 'Stranraer'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Sewell', 'given_name': 'William', 'date_of_birth': '1840-07-10', 'place_of_birth': 'Forfar'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Larkins', 'given_name': 'Male', 'date_of_birth': '1842-12-29', 'place_of_birth': 'Peebles'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Gray', 'given_name': 'John', 'date_of_birth': '1890-04-06', 'place_of_birth': 'Dalry'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Owens', 'given_name': 'Mary', 'date_of_birth': '10-10-1914', 'place_of_birth': 'Haddington'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Owens', 'given_name': 'Mary', 'date_of_birth': '10-10-1914', 'place_of_birth': 'Haddington'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Derry', 'given_name': 'Peter', 'date_of_birth': '25-08-1956', 'place_of_birth': 'Hamilton'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Derry', 'given_name': 'Peter', 'date_of_birth': '25-08-1956', 'place_of_birth': 'Hamilton'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Lodge', 'given_name': 'Ruth', 'date_of_birth': '30-06-1956', 'place_of_birth': 'Oban'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Lodge', 'given_name': 'Ruth', 'date_of_birth': '30-06-1956', 'place_of_birth': 'Oban'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Powell', 'given_name': 'Ada', 'date_of_birth': '1887-02-14', 'place_of_birth': 'Crieff'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Lowe', 'given_name': 'Helen', 'date_of_birth': '04-01-1977', 'place_of_birth': 'Kirkcaldy'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Lowe', 'given_name': 'Helen', 'date_of_birth': '04-01-1977', 'place_of_birth': 'Kirkcaldy'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'French', 'given_name': 'Alfred', 'date_of_birth': '1880-11-20', 'place_of_birth': 'Ballymena'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Nickolass', 'given_name': 'Sarah', 'date_of_birth': '1857-09-22', 'place_of_birth': 'Fraserburgh'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Ostryzniuk', 'given_name': 'Leanne', 'date_of_birth': '01-09-1976', 'place_of_birth': 'Campbeltown'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Ostryzniuk', 'given_name': 'Leanne', 'date_of_birth': '01-09-1976', 'place_of_birth': 'Campbeltown'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Miles', 'given_name': 'Ellen', 'date_of_birth': '1842-09-08', 'place_of_birth': 'Irvine'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Clark', 'given_name': 'Michelle', 'date_of_birth': '23-12-1981', 'place_of_birth': 'Forres'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Clark', 'given_name': 'Michelle', 'date_of_birth': '23-12-1981', 'place_of_birth': 'Forres'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Kelley', 'given_name': 'Alan', 'date_of_birth': '13-03-1949', 'place_of_birth': 'Stirling'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Kelley', 'given_name': 'Alan', 'date_of_birth': '13-03-1949', 'place_of_birth': 'Stirling'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Balsdon', 'given_name': 'Ruth', 'date_of_birth': '1896-02-08', 'place_of_birth': 'Ayr'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Humphries', 'given_name': 'Frederick', 'date_of_birth': '30-11-1909', 'place_of_birth': 'Anstruther'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Humphries', 'given_name': 'Frederick', 'date_of_birth': '30-11-1909', 'place_of_birth': 'Anstruther'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Whitby', 'given_name': 'Harry', 'date_of_birth': '1879-12-19', 'place_of_birth': 'Golspie'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Hughes', 'given_name': 'Hughie', 'date_of_birth': '1880-03-13', 'place_of_birth': 'Lanark'}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Edge', 'given_name': 'David', 'date_of_birth': '13-01-1945', 'place_of_birth': 'Helensburgh'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Edge', 'given_name': 'David', 'date_of_birth': '13-01-1945', 'place_of_birth': 'Helensburgh'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Mcgovan', 'given_name': 'Lisa', 'date_of_birth': '12-05-1973', 'place_of_birth': 'Ballymena'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Mcgovan', 'given_name': 'Lisa', 'date_of_birth': '12-05-1973', 'place_of_birth': 'Ballymena'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Robertson', 'given_name': 'Leslie', 'date_of_birth': '03-01-1914', 'place_of_birth': 'Kinross'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Robertson', 'given_name': 'Leslie', 'date_of_birth': '03-01-1914', 'place_of_birth': 'Kinross'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Bale', 'given_name': 'Anthony', 'date_of_birth': '15-02-1946', 'place_of_birth': 'Kelso'}
+2022-07-14 17:52:03 WARNING  validation error found, record wont be inserted into db, error as follows: 1 validation error for PeopleRawBase
+date_of_birth
+  invalid date format (type=value_error.date)
+{"errored_row":{'family_name': 'Bale', 'given_name': 'Anthony', 'date_of_birth': '15-02-1946', 'place_of_birth': 'Kelso'}}
+2022-07-14 17:52:03 INFO     row:  {'family_name': 'Lewis', 'given_name': 'Margaret', 'date_of_birth': '1865-06-30', 'place_of_birth': 'Crieff'}
+2022-07-14 17:52:03 INFO     finished ingesting /app/data/people_col.csv
+2022-07-14 17:52:03 INFO     Starting to query database on mode post
+2022-07-14 17:52:03 INFO     Finished to query database on mode post
+2022-07-14 17:52:03 INFO     Finished ingestion process, writing healthcheck file for docker to start jsonwriter
+2022-07-14 17:52:06 INFO     Preparing to write json data in ./data/summary_output.json
+2022-07-14 17:52:06 INFO     Starting to query database on mode get
+2022-07-14 17:52:06 INFO     Finished to write json data in ./data/summary_output.json
