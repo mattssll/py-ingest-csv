@@ -7,7 +7,7 @@ from datetime import date
 class PeopleRawBase(SQLModel):
     given_name: str = Field(max_length=48)
     family_name: str = Field(max_length=96)
-    date_of_birth: str = Field(max_length=32)
+    date_of_birth: date
     place_of_birth: Optional[str] = Field(max_length=96, index=True)
 
 
